@@ -44,8 +44,9 @@ public class Method4 {
 			{
 				if(numberOfTrue<2)
 				{
-					System.out.println("Method 4 returned true ->"+ new SimpleDateFormat( "HH:mm:ss:S" ).format( new Date( System
-		                    .currentTimeMillis() ) ));
+					System.out.println("Method 4 returned true ->"+ 
+							   new SimpleDateFormat( "HH:mm:ss:S" ).format( new Date( System
+		                    			.currentTimeMillis() ) ));
 					numberOfTrue++;
 					return true;
 				}
