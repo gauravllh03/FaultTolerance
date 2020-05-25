@@ -45,6 +45,7 @@ public class Method4 {
 					System.out.println("Method 4 returned true for->"+id+" at "+
 										new SimpleDateFormat( "HH:mm:ss:S" ).format( new Date( System
 										.currentTimeMillis() ) ));
+
 					numberOfTrue++;
 					return true;
 				}
