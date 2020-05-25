@@ -36,7 +36,7 @@ public class Method4Test {
 		//checking when method is in downgrade mode
 		method4Instance1.flipToDowngradedMode();
 		assertEquals(0,method4Instance1.getMode());
-		assertEquals(false,method4Instance1.methodFour());
+		assertEquals(false,method4Instance1.methodFour(1));
 		
 		
 		/*
@@ -47,11 +47,12 @@ public class Method4Test {
 		method4Instance1.flipToNormalMode();
 		int truecounter=0;
 		long startTime=System.currentTimeMillis();
+		Method4.lastScheduledTime=System.currentTimeMillis()+10;
 		while(System.currentTimeMillis()-startTime<1000)
 		{
-			if(method4Instance1.methodFour())
+			if(method4Instance1.methodFour(1))
 				truecounter++;
-			if(method4Instance2.methodFour())
+			if(method4Instance2.methodFour(2))
 				truecounter++;
 		}
 		assertEquals(2,truecounter);

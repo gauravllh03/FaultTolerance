@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class Method2 {
 	
 	private static int method2Mode = 1;
-	private static long lastScheduledTime=System.currentTimeMillis()+350;
+	public static long lastScheduledTime=System.currentTimeMillis();
 	private static int numberOfTrue=0;
 	
 	
@@ -29,12 +29,9 @@ public class Method2 {
 	 * 
 	 */
 	
-	public synchronized boolean methodTwo() {
+	public synchronized boolean methodTwo(int id){
 		if (method2Mode == 0) {
-			System.out.println("Method 2 is down at "+
-								new SimpleDateFormat( "HH:mm:ss" ).format( new Date( System
-								.currentTimeMillis() ) ));
-			
+			// downgraded mode
 			return false;
 		} 
 		
@@ -44,7 +41,7 @@ public class Method2 {
 			{
 				if(numberOfTrue<2)
 				{
-					System.out.println("Method 2 returned true->"+
+					System.out.println("Method 2 returned true for->"+id+" at "+
 										new SimpleDateFormat( "HH:mm:ss:S" ).format( new Date( System
 										.currentTimeMillis() ) ));
 					numberOfTrue++;
@@ -63,7 +60,7 @@ public class Method2 {
 				
 				lastScheduledTime=System.currentTimeMillis(); 
 				numberOfTrue=1;
-				System.out.println("Method 2 returned true ->"+
+				System.out.println("Method 2 returned true for->"+id+" at "+
 									new SimpleDateFormat( "HH:mm:ss:S" ).format( new Date( System
 									.currentTimeMillis() ) ));
 				

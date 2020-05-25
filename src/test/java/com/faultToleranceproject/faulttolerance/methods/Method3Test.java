@@ -35,7 +35,7 @@ public class Method3Test {
 		//checking when method is in downgrade mode
 		method3Instance1.flipToDowngradedMode();
 		assertEquals(0,method3Instance1.getMode());
-		assertEquals(false,method3Instance1.methodThree());
+		assertEquals(false,method3Instance1.methodThree(1));
 		
 		
 		/*
@@ -46,12 +46,13 @@ public class Method3Test {
 		method3Instance1.flipToNormalMode();
 		int truecounter=0;
 		long startTime=System.currentTimeMillis();
+		Method3.lastScheduledTime=System.currentTimeMillis()+10;
 		while(System.currentTimeMillis()-startTime<1000)
 		{
-			if(method3Instance1.methodThree())
+			if(method3Instance1.methodThree(1))
 				truecounter++;
 			
-			if(method3Instance2.methodThree())
+			if(method3Instance2.methodThree(2))
 				truecounter++;
 		}
 		assertEquals(2,truecounter);

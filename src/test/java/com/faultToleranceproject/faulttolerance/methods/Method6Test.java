@@ -36,7 +36,7 @@ public class Method6Test {
 		//checking when method is in downgrade mode
 		method6Instance1.flipToDowngradedMode();
 		assertEquals(0,method6Instance1.getMode());
-		assertEquals(false,method6Instance1.methodSix());
+		assertEquals(false,method6Instance1.methodSix(1));
 		
 		
 		/*
@@ -47,14 +47,36 @@ public class Method6Test {
 		method6Instance1.flipToNormalMode();
 		int truecounter=0;
 		long startTime=System.currentTimeMillis();
+		Method6.lastScheduledTime=System.currentTimeMillis()+10;
 		while(System.currentTimeMillis()-startTime<1000)
 		{
-			if(method6Instance1.methodSix())
+			if(method6Instance1.methodSix(1))
 				truecounter++;
-			if(method6Instance2.methodSix())
+			if(method6Instance2.methodSix(2))
 				truecounter++;
 		}
 		assertEquals(2,truecounter);
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -15,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.faultToleranceproject.faulttolerance.FaultToleranceApplication;
+import com.faultToleranceproject.faulttolerance.main_application.MainApplication;
 import com.faultToleranceproject.faulttolerance.methods.Method1;
 
 
@@ -27,6 +28,11 @@ public class SwingApplicationTest {
 	private SwingApplication swingApplication;
 	@Autowired
 	private Method1 method1;
+	@Autowired
+	private MainApplication mainApplication;
+	
+	
+	
 	
 	
 	/*
@@ -39,14 +45,14 @@ public class SwingApplicationTest {
 	 */
 	
 	@Test
-	public void Test() throws InterruptedException {
+	public void MethodDowngradeControllerTest() throws InterruptedException {
 	
 		JButton downgradeButton=mock(JButton.class);
 		
 		
 		doAnswer(new Answer<Void>(){
             public Void answer(InvocationOnMock invocation) throws Throwable {
-                System.out.println("You clicked me");
+                System.out.println("You clicked downgrade method button");
                 Thread thread = new Thread( new Runnable() {
         			@Override
                     public void run() {
@@ -60,7 +66,6 @@ public class SwingApplicationTest {
 		
 		
 		downgradeButton.doClick();
-        
         
     	 while(method1.getMode()!=0);
     	 
@@ -80,5 +85,56 @@ public class SwingApplicationTest {
 		  */
 		 assertEquals(1,method1.getMode());
 	}
-
+	
+	
+	
+	
+	/*
+	 *Mocking the JButton class and on clicking it calling the 
+	 *stopServers() method that and checking if value of stopServers
+	 *variable in mainApplication becomes 0 (i.e, servers stop) 
+	 */
+	
+	
+	@Test
+	public void StopServersTest()
+	{
+		JButton stopServersButton = mock(JButton.class);
+		doAnswer(new Answer<Void>(){
+            public Void answer(InvocationOnMock invocation) throws Throwable {
+                System.out.println("You clicked stop servers button");
+                swingApplication.stopServers();
+                return null;
+            }
+        }).when(stopServersButton).doClick();
+		
+		stopServersButton.doClick();
+		assertEquals(0,mainApplication.getStopServersValue());
+	}
+	
+	
+	
+	
+	/*
+	 *Mocking the JButton class and on clicking it calling the 
+	 *startServers() method that and checking if value of startServers
+	 *variable in mainApplication becomes 1 (i.e, servers start working) 
+	 */
+	
+	@Test
+	public void StartServersTest()
+	{
+		JButton startServersButton = mock(JButton.class);
+		doAnswer(new Answer<Void>(){
+            public Void answer(InvocationOnMock invocation) throws Throwable {
+                System.out.println("You clicked start servers button");
+                swingApplication.startServers();
+                return null;
+            }
+        }).when(startServersButton).doClick();
+		
+		startServersButton.doClick();
+		assertEquals(1,mainApplication.getStartServersValue());
+	}
+	
 }

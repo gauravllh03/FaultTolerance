@@ -38,7 +38,7 @@ public class Method5Test {
 		//checking when method is in downgrade mode
 		method5Instance1.flipToDowngradedMode();
 		assertEquals(0,method5Instance1.getMode());
-		assertEquals(false,method5Instance1.methodFive());
+		assertEquals(false,method5Instance1.methodFive(1));
 		
 		
 		/*
@@ -49,11 +49,12 @@ public class Method5Test {
 		method5Instance1.flipToNormalMode();
 		int truecounter=0;
 		long startTime=System.currentTimeMillis();
+		Method5.lastScheduledTime=System.currentTimeMillis()+10;
 		while(System.currentTimeMillis()-startTime<1000)
 		{
-			if(method5Instance1.methodFive())
+			if(method5Instance1.methodFive(1))
 				truecounter++;
-			if(method5Instance2.methodFive())
+			if(method5Instance2.methodFive(2))
 				truecounter++;
 		}
 		assertEquals(2,truecounter);

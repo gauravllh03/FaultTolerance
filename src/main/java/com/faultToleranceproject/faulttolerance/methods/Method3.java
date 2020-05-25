@@ -16,7 +16,7 @@ public class Method3 {
 	
 	
 	private static int method3Mode = 1;
-	private static long lastScheduledTime=System.currentTimeMillis()+350;
+	public static long lastScheduledTime=System.currentTimeMillis();
 	private static int numberOfTrue=0;
 	
 	
@@ -30,18 +30,17 @@ public class Method3 {
 	 * 
 	 */
 	
-	public synchronized boolean methodThree() {
+	public synchronized boolean methodThree(int id) {
 		if (method3Mode == 0) {
-			System.out.println("Method 3 is down at "+new SimpleDateFormat( "HH:mm:ss" ).format( new Date( System
-                    .currentTimeMillis() ) ));
-				return false;
+			// downgraded mode
+			return false;
 		} 
 		else {
 			if(System.currentTimeMillis()-lastScheduledTime <1000)
 			{
 				if(numberOfTrue<2)
 				{
-					System.out.println("Method 3 returned true ->"+
+					System.out.println("Method 3 returned true for->"+id+" at "+
 										new SimpleDateFormat( "HH:mm:ss:S" ).format( new Date( System
 										.currentTimeMillis() ) ));
 					
@@ -62,7 +61,7 @@ public class Method3 {
 				
 				lastScheduledTime=System.currentTimeMillis(); 
 				numberOfTrue=1;
-				System.out.println("Method 3 returned true ->"+
+				System.out.println("Method 3 returned true for->"+id+" at "+
 									new SimpleDateFormat( "HH:mm:ss:S" ).format( new Date( System
 									.currentTimeMillis() ) ));
 				

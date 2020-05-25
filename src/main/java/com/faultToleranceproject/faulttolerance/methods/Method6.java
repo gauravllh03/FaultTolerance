@@ -16,7 +16,7 @@ public class Method6 {
 	
 	
 	private static int method6Mode = 1;
-	private static long lastScheduledTime=System.currentTimeMillis()+350;
+	public static long lastScheduledTime=System.currentTimeMillis();
 	private static int numberOfTrue=0;
 	
 
@@ -31,11 +31,9 @@ public class Method6 {
 	 * 
 	 */
 	
-	public synchronized boolean methodSix() {
+	public synchronized boolean methodSix(int id) {
 		if (method6Mode == 0) {
-			System.out.println("Method 6 is down at "+
-								new SimpleDateFormat( "HH:mm:ss" ).format( new Date( System
-								.currentTimeMillis() ) ));
+			// downgraded mode
 			return false;
 		} 
 		else {
@@ -45,7 +43,7 @@ public class Method6 {
 				
 				if(numberOfTrue<2)
 				{
-					System.out.println("Method 6 returned true ->"+
+					System.out.println("Method 6 returned true for->"+id+" at "+
 										new SimpleDateFormat( "HH:mm:ss:S" ).format( new Date( System
 										.currentTimeMillis() ) ));
 					
@@ -72,7 +70,7 @@ public class Method6 {
 				lastScheduledTime=System.currentTimeMillis(); 
 				numberOfTrue=1;
 				
-				System.out.println("Method 6 returned true ->"+ 
+				System.out.println("Method 6 returned true for->"+id+" at "+ 
 									new SimpleDateFormat( "HH:mm:ss:S" ).format( new Date( System
 									.currentTimeMillis() ) ));
 				

@@ -33,13 +33,13 @@ public class Method1Test {
 	 */
 	
 	@Test
-	public void test() {
+	public void test() throws InterruptedException {
 		
 		
 		//checking when method is in downgrade mode
 		method1Instance1.flipToDowngradedMode();
 		assertEquals(0,method1Instance1.getMode());
-		assertEquals(false,method1Instance1.methodOne());
+		assertEquals(false,method1Instance1.methodOne(1));
 		
 		
 		/*
@@ -49,14 +49,14 @@ public class Method1Test {
 		 */
 		method1Instance1.flipToNormalMode();
 		int truecounter=0;
+		
 		long startTime=System.currentTimeMillis();
-		
-		
+		Method1.lastScheduledTime=System.currentTimeMillis()+10;
 		while(System.currentTimeMillis()-startTime<1000)
 		{
-			if(method1Instance1.methodOne())
+			if(method1Instance1.methodOne(1))
 				truecounter++;
-			if(method1Instance2.methodOne())
+			if(method1Instance2.methodOne(2))
 				truecounter++;
 		}
 		
