@@ -1,4 +1,4 @@
-package com.faultToleranceproject.faulttolerance.swing_application;
+package com.faultToleranceproject.faulttolerance.main_application;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
