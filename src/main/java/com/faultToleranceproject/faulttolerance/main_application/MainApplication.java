@@ -34,6 +34,10 @@ public class MainApplication {
 	private int retryCounterMethod4=0;
 	private int retryCounterMethod5=0;
 	private int retryCounterMethod6=0;
+
+	/*
+	 * function to sleep for 1 second till next id is generated
+	 */
 	
 	private void waitTillNextIdGenerated()
 	{
@@ -65,6 +69,7 @@ public class MainApplication {
                 		{
                 			tpsCalculator.StoreTPS(generatedId);
                 		}
+
             			requestQueueMethod1.add(new Pair<Integer,Long>(generatedId,System.currentTimeMillis()));
             			requestQueueMethod2.add(new Pair<Integer,Long>(generatedId,System.currentTimeMillis()));
             			requestQueueMethod3.add(new Pair<Integer,Long>(generatedId,System.currentTimeMillis()));
@@ -94,7 +99,6 @@ public class MainApplication {
     							GenericTrackerForDependency.waitForDependency(serverDependencies,requestQueueMethod1.peek().getKey());
     						}
     						if(method1.methodOne(requestQueueMethod1.peek())){
-    							//TrackerForMethod1AndMethod2.TrackIDProcessedMethod1(requestQueueMethod1.peek().getKey());
     							retryCounterMethod1=0;
     							requestQueueMethod1.remove();
     						}
@@ -119,7 +123,6 @@ public class MainApplication {
     							GenericTrackerForDependency.waitForDependency(serverDependencies,requestQueueMethod2.peek().getKey());
     						}
     						if(method2.methodTwo(requestQueueMethod2.peek())){
-    							//TrackerForMethod1AndMethod2.TrackIDProcessedMethod2(requestQueueMethod2.peek().getKey());
     							retryCounterMethod2=0;
     							requestQueueMethod2.remove();
     						}
@@ -245,6 +248,7 @@ public class MainApplication {
     		method3Thread.join();
     		method4Thread.join();
     		method5Thread.join();
-    		method6Thread.join();		
+    		method6Thread.join();
+    		
 	}
 }

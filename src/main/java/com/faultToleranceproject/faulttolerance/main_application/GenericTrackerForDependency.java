@@ -1,6 +1,4 @@
 package com.faultToleranceproject.faulttolerance.main_application;
-
-
 public class GenericTrackerForDependency {
 	
 	
