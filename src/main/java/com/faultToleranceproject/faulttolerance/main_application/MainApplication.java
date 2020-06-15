@@ -67,7 +67,7 @@ public class MainApplication {
                 		long startTime=System.currentTimeMillis();
                 		if(generatedId>=1)
                 		{
-                			tpsCalculator.StoreTPS(generatedId);
+                			tpsCalculator.StoreTPS(generatedId);			
                 		}
 
             			requestQueueMethod1.add(new Pair<Integer,Long>(generatedId,System.currentTimeMillis()));
@@ -249,6 +249,5 @@ public class MainApplication {
     		method4Thread.join();
     		method5Thread.join();
     		method6Thread.join();
-    		
 	}
 }

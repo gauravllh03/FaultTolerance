@@ -339,7 +339,6 @@ public class SwingApplication{
             	{
             		int methodToVisualize=Integer.parseInt(String.valueOf(methodSelectorForVisualizing.getSelectedItem()));
             		String metricToVisualize=String.valueOf(metricSelectorForVisualizing.getSelectedItem());
-            		System.out.println(methodToVisualize + "  "+ metricToVisualize);
             		if(metricToVisualize.equals("visibility time in queue"))
             		{
             			PlotVisibility.methodNumber=methodToVisualize;

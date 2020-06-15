@@ -6,13 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import com.faultToleranceproject.faulttolerance.main_application.ServerController;
 import com.faultToleranceproject.faulttolerance.main_application.SwingApplication;
 
-
-/*
- * main class to load application context and get all beans 
- * and test their functions
- * 
- */
-
 @Configuration
 @ComponentScan
 public class FaultToleranceApplication {
